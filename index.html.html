@@ -1,0 +1,58 @@
+<html>
+    <head>
+    
+        <style>
+            
+            #od{
+            
+               
+                justify-content: space-around;
+                display: flex;
+                flex-wrap:wrap;
+                gap: 5px;
+                
+
+            }
+            #card{
+                height: 600px;
+                width: 300px;
+                border:1px solid black;
+            
+                text-align: center;
+            }
+            #img{
+                height:120px;
+                width:70px;
+            }
+            h1{
+                font-size: 20px;
+            }
+            
+            
+        </style>
+    </head>
+    <body>
+<div id="od">
+       
+        </div>
+        <script>
+            let htmldata="";
+            fetch("https://fakestoreapi.com/products")
+            .then(data=>data.json())
+            .then(completedata=>{
+                completedata.map((obj1)=>
+                { htmldata=htmldata+`<div id="card">
+        <h1 id="head">${obj1.title}</h1>
+        <img src=${obj1.image} id="img">
+        <p id="des">${obj1.description}</p>
+        <h3 id="category">${obj1.category} </h3>
+        <p>⭐⭐⭐⭐</p>
+        <h2 id="amnt">${obj1.price}</h2>
+        </div>`
+        
+    })
+    document.getElementById("od").innerHTML=htmldata;
+            })
+        </script>
+    </body>
+</html>
